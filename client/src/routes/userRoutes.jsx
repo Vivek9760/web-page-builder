@@ -1,5 +1,5 @@
 /* ----------------------------- components ----------------------------- */
-import Home from "../components/protected/common/home/Home.jsx";
+import Home from "../components/protected/client/home/Home.jsx";
 
 /* ----------------------------- libraries ----------------------------- */
 import { Navigate } from "react-router-dom";

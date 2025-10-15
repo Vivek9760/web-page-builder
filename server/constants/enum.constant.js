@@ -1,6 +1,6 @@
 const USER_STATUS = {
     VERIFIED: 'VERIFIED',
-    OTP_SENT: 'OTP_SENT'
+    PENDING: 'PENDING'
 }
 
 module.exports = {

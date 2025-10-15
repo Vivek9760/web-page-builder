@@ -1,9 +1,12 @@
 /* ----------------------------- libraries ----------------------------- */
 import { Navigate } from "react-router-dom";
 
+/* ----------------------------- components ----------------------------- */
+import Users from "../components/protected/admin/Users";
+
+
 const adminRoutes = [
-  { path: "/", element: <>dashboard</> },
-  { path: "/users", element: <>users list</> },
+  { path: "/", element: <Users /> },
   { path: "/*", element: <Navigate to={"/"} /> },
 ];
 
