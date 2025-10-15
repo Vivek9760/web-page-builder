@@ -1,0 +1,11 @@
+[
+    {
+        "name": "Vivek Saini",
+        "username": "vivek_saini",
+        "email": "admin@webpagebuilder.com",
+        "status":"VERIFIED",
+        "role": "ADMIN",
+        "isActive": true,
+        "password": "$2b$10$GK8urGQsyo9np1aU/rqp0OG8uMqP8AK4YDI6sGlqej6JeN7nTUTXG"
+    }
+]
