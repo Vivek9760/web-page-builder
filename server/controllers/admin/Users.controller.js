@@ -1,5 +1,5 @@
 /* ----------------------------- filepath ----------------------------- */
-const FILE_PATH = "server/controllers/admin/Users.controller";
+const FILE_PATH = "server/controllers/admin/users.controller";
 
 /* ----------------------------- model ----------------------------- */
 const UserModel = require("../../models/user.model");

@@ -3,10 +3,11 @@ const { Router } = require('express');
 const router = Router();
 
 /* ----------------------------- controller ----------------------------- */
-const UsersController = require('../controllers/admin/users.controller');
+const WebPageController = require('../controllers/client/web-page.controller.js');
 
 
-router.get('/users', UsersController.getUsersList);
+router.get("/web-pages", WebPageController.getWebPageList);
+router.get("/web-page/:slug", WebPageController.getWebPageBySlug);
 
 
 module.exports = router;

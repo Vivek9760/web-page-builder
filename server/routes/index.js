@@ -6,7 +6,7 @@ const { authentication, permitRole } = require("../middlewares/authentication.mi
 router.use("/authentication", require("./authentication.route"));
 
 /* ----------------------------- user routes ----------------------------- */
-// router.use('/user', authentication, permitRole('CLIENT'), require('./user'));
+router.use('/user', authentication, permitRole('CLIENT'), require('./user.route.js'));
 
 /* ----------------------------- admin routes ----------------------------- */
 router.use("/admin", authentication, permitRole("ADMIN"), require("./admin.route.js"));

@@ -1,5 +1,10 @@
-import React, { useEffect, useState } from "react";
+/* ----------------------------- react ----------------------------- */
+import { useEffect, useState } from "react";
+
+/* ----------------------------- libraries ----------------------------- */
 import axios from "axios";
+
+/* ----------------------------- components ----------------------------- */
 import Loader from "../../common-ui/Loader";
 
 export default function AdminUsersTable() {
