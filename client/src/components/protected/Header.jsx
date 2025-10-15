@@ -31,7 +31,7 @@ export default function Header() {
       <div className="container-fluid px-4">
         {/* Brand */}
         <Link to="/" className="navbar-brand fw-bold text-success fs-4">
-          Web Page Builder
+          Web Page Builder ({store.user.role})
         </Link>
 
         {/* Navbar Toggler */}
@@ -50,31 +50,11 @@ export default function Header() {
         {/* Nav Links */}
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto align-items-center">
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link to="/" className="nav-link text-light">
                 Home
               </Link>
-            </li>
-
-            {store?.user?.role === "ADMIN" && (
-              <li className="nav-item">
-                <Link to="/users" className="nav-link text-light">
-                  Users
-                </Link>
-              </li>
-            )}
-
-            <li className="nav-item">
-              <Link to="/room" className="nav-link text-light">
-                My Rooms
-              </Link>
-            </li>
-
-            <li className="nav-item">
-              <Link to="/profile" className="nav-link text-light">
-                Profile
-              </Link>
-            </li>
+            </li> */}
 
             <li className="nav-item ms-3">
               <button onClick={logout} disabled={loader} className="btn btn-success btn-sm fw-semibold px-3">

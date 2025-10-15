@@ -130,7 +130,7 @@ export default function Signup() {
                 </div>
 
                 <button type="submit" disabled={isSubmitting} className="btn btn-success w-100">
-                  Create Account
+                  {isSubmitting ? "Wait a sec..." : "Create Account"}
                 </button>
               </>
             ) : (
@@ -150,7 +150,7 @@ export default function Signup() {
                 </div>
 
                 <button type="submit" disabled={isSubmitting} className="btn btn-success w-100">
-                  Verify
+                  {isSubmitting ? "Verifying..." :"Verify"}
                 </button>
               </>
             )}
