@@ -8,7 +8,7 @@ import { Navigate } from "react-router-dom";
 
 const userRoutes = [
   { path: "/", element: <Home /> },
-  { path: "/:slug", element: <WebPagePreview /> },
+  { path: "/preview/:slug", element: <WebPagePreview /> },
   { path: "/*", element: <Navigate to={"/"} /> },
 ];
 

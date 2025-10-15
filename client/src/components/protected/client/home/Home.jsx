@@ -64,7 +64,7 @@ export default function WebPageList() {
                   <tr key={page._id}>
                     <td className="text-center">{index + 1}</td>
                     <td>
-                      <span style={{ cursor: "pointer" }} className="text-primary" onClick={() => navigate(`/${page.slug}`)}>
+                      <span style={{ cursor: "pointer" }} className="text-primary" onClick={() => navigate(`/preview/${page.slug}`)}>
                         {page.title}
                       </span>
                     </td>
