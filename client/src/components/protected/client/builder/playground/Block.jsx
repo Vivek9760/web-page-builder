@@ -169,7 +169,6 @@ export default function Block({ block, onSelect, selectedBlockId, moveBlock, fin
             fontWeight: "500",
             transition: "all 0.2s ease",
           }}
-          onMouseDown={(e) => e.preventDefault()}
         >
           {block.content.label || "Button"}
         </button>

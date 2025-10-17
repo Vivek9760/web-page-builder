@@ -31,7 +31,7 @@ export default function Header() {
       <div className="container-fluid px-4">
         {/* Brand */}
         <Link to="/" className="navbar-brand fw-bold text-success fs-4">
-          Web Page Builder
+          👋 Hi, {store.user.name}
         </Link>
 
         {/* Navbar Toggler */}
@@ -47,19 +47,18 @@ export default function Header() {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        {/* Nav Links */}
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto align-items-center">
-            {store.user.role == "CLIENT" && (
+            {store.user.role === "CLIENT" && (
               <>
                 <li className="nav-item">
-                  <Link to="/" className="nav-link text-light">
-                    Home
+                  <Link to="/" className="nav-link text-light px-3 py-2 rounded hover-bg-light" style={{ transition: "0.2s" }}>
+                    Pages
                   </Link>
                 </li>
 
                 <li className="nav-item">
-                  <Link to="/builder" className="nav-link text-light">
+                  <Link to="/builder" className="nav-link text-light px-3 py-2 rounded hover-bg-light" style={{ transition: "0.2s" }}>
                     Builder
                   </Link>
                 </li>
@@ -67,8 +66,8 @@ export default function Header() {
             )}
 
             <li className="nav-item ms-3">
-              <button onClick={logout} disabled={loader} className="btn btn-success btn-sm fw-semibold px-3">
-                {loader ? "Logging out..." : "Logout"}
+              <button onClick={logout} disabled={loader} className="btn btn-success btn-sm fw-semibold px-4 py-2 rounded shadow-sm">
+                {loader ? <i className="bi bi-person-walking me-2"></i> : <i className="bi bi-box-arrow-right me-2"></i>}
               </button>
             </li>
           </ul>

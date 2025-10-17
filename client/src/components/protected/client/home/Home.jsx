@@ -110,7 +110,7 @@ export default function WebPageList() {
         )}
       </div>
 
-      <style jsx>{`
+      <style>{`
         .hover-card:hover {
           transform: translateY(-5px);
           transition: all 0.3s ease-in-out;
