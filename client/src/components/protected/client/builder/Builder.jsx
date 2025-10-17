@@ -65,6 +65,10 @@ export default function PageBuilder() {
 
   useEffect(() => {
     if (slug) fetchWebPage();
+    else {
+      setBlocks([])
+      setTitle("Web Page");
+    }
   }, [slug]);
 
   useEffect(() => {
