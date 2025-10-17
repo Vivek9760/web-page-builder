@@ -7,6 +7,9 @@ import axios from "axios";
 /* ----------------------------- components ----------------------------- */
 import Loader from "../../common-ui/Loader";
 
+/* ----------------------------- utils ----------------------------- */
+import { formatDateTime } from "../../../utils/time.util";
+
 export default function AdminUsersTable() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -65,13 +68,7 @@ export default function AdminUsersTable() {
                     <td>{user.name}</td>
                     <td>{user.email}</td>
                     <td>{user.isActive ? "Active" : "Inactive"}</td>
-                    <td className="text-center">
-                      {new Date(user.createdOn).toLocaleDateString("en-GB", {
-                        day: "2-digit",
-                        month: "short",
-                        year: "numeric",
-                      })}
-                    </td>
+                    <td className="text-center">{formatDateTime(user.createdOn)}</td>
                   </tr>
                 ))
               )}
