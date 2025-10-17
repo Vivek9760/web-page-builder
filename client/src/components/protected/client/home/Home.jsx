@@ -8,6 +8,9 @@ import { useNavigate } from "react-router-dom";
 /* ----------------------------- components ----------------------------- */
 import Loader from "../../../common-ui/Loader";
 
+/* ----------------------------- utils ----------------------------- */
+import { formatDateTime } from "../../../../utils/time.util";
+
 export default function WebPageList() {
   const [webPage, setWebPage] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -24,7 +27,7 @@ export default function WebPageList() {
       setWebPage(data.webPages);
     } catch (err) {
       console.error(err);
-      setError("Failed to fetch webPage.");
+      setError("Failed to fetch web pages.");
     } finally {
       setLoading(false);
     }
@@ -41,48 +44,71 @@ export default function WebPageList() {
   return (
     <Loader isLoading={loading}>
       <div className="container py-5">
-        <h3 className="text-center text-success mb-4">All WebPage</h3>
-        <div className="table-responsive">
-          <table className="table table-bordered table-hover align-middle">
-            <thead className="table-dark text-center">
-              <tr>
-                <th>#</th>
-                <th>Title</th>
-                <th>status</th>
-                <th>Created At</th>
-              </tr>
-            </thead>
-            <tbody>
-              {webPage.length === 0 ? (
-                <tr>
-                  <td colSpan="5" className="text-center">
-                    No webPage found.
-                  </td>
-                </tr>
-              ) : (
-                webPage.map((page, index) => (
-                  <tr key={page._id}>
-                    <td className="text-center">{index + 1}</td>
-                    <td>
-                      <span style={{ cursor: "pointer" }} className="text-primary" onClick={() => navigate(`/preview/${page.slug}`)}>
-                        {page.title}
+        <h2 className="text-center text-primary mb-5 fw-bold">Your Web Pages</h2>
+
+        {webPage.length === 0 ? (
+          <div className="text-center text-muted fs-5">No web pages found.</div>
+        ) : (
+          <div className="row g-4">
+            {webPage.map((page, index) => (
+              <div key={page._id} className="col-md-6 col-lg-4">
+                <div className="card shadow-sm h-100 border-0 hover-card">
+                  <div className="card-body d-flex flex-column justify-content-between">
+                    <div>
+                      <div className="d-flex align-items-center justify-content-between">
+                        <h5
+                          className="card-title text-primary fw-bold mb-0"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => navigate(`/preview/${page.slug}`)}
+                        >
+                          {page.title}
+                        </h5>
+
+                        <i
+                          className="bi bi-eye text-secondary fs-5 ms-2"
+                          title="Preview Page"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => navigate(`/preview/${page.slug}`)}
+                        ></i>
+                      </div>
+
+                      <p className="card-subtitle mb-2 text-muted">/{page.slug}</p>
+                      <span
+                        className={`badge ${
+                          page.status === "published" ? "bg-success" : page.status === "draft" ? "bg-warning text-dark" : "bg-secondary"
+                        }`}
+                      >
+                        {page.status.toUpperCase()}
                       </span>
-                    </td>
-                    <td>{page.status}</td>
-                    <td className="text-center">
-                      {new Date(page.createdOn).toLocaleDateString("en-GB", {
-                        day: "2-digit",
-                        month: "short",
-                        year: "numeric",
-                      })}
-                    </td>
-                  </tr>
-                ))
-              )}
-            </tbody>
-          </table>
-        </div>
+                    </div>
+
+                    <div className="d-flex justify-content-between align-items-center mt-3">
+                      <small className="text-muted">{formatDateTime(page.createdOn)}</small>
+                      <i
+                        className="bi bi-pencil-square text-primary fs-5"
+                        style={{ cursor: "pointer" }}
+                        onClick={() => navigate(`/builder/${page.slug}`)}
+                      ></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
+
+      <style jsx>{`
+        .hover-card:hover {
+          transform: translateY(-5px);
+          transition: all 0.3s ease-in-out;
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .bi-eye:hover {
+          color: #0d6efd !important;
+        }
+      `}</style>
     </Loader>
   );
 }

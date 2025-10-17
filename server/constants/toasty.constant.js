@@ -24,6 +24,10 @@ const Toasty = {
     SUCCESS: "OTP resent successfully! Please check your email.",
     ERROR: "An error occurred while resending the OTP. Please try again later.",
   },
+  WEB_PAGE: {
+    SAVED: "Web page saved successfully",
+    PUBLISHED: "Web page published successfully",
+  },
 };
 
-module.exports = Toasty
+module.exports = Toasty;

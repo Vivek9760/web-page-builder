@@ -16,11 +16,14 @@ const WebPageSchema = (mongoose) => {
       padding: String,
       margin: String,
       borderRadius: String,
-      textAlign: String,
+      border: String,
       width: String,
       height: String,
     },
-    children: [this],
+  });
+
+  BlockSchema.add({
+    children: [BlockSchema],
   });
 
   return new Schema(

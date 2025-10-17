@@ -50,11 +50,21 @@ export default function Header() {
         {/* Nav Links */}
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto align-items-center">
-            <li className="nav-item">
-              <Link to="/" className="nav-link text-light">
-                Home
-              </Link>
-            </li>
+            {store.user.role == "CLIENT" && (
+              <>
+                <li className="nav-item">
+                  <Link to="/" className="nav-link text-light">
+                    Home
+                  </Link>
+                </li>
+
+                <li className="nav-item">
+                  <Link to="/builder" className="nav-link text-light">
+                    Builder
+                  </Link>
+                </li>
+              </>
+            )}
 
             <li className="nav-item ms-3">
               <button onClick={logout} disabled={loader} className="btn btn-success btn-sm fw-semibold px-3">
