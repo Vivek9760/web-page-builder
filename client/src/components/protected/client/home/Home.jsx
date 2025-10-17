@@ -44,10 +44,22 @@ export default function WebPageList() {
   return (
     <Loader isLoading={loading}>
       <div className="container py-5">
-        <h2 className="text-center text-primary mb-5 fw-bold">Your Web Pages</h2>
+        <div className="d-flex align-items-center justify-content-center mb-5">
+          <h2 className="text-primary fw-bold mb-0">Your Web Pages</h2>
+          <button className="btn btn-outline-primary btn-sm ms-3" onClick={() => navigate("/builder")} title="Create New Page">
+            <i className="bi bi-plus-lg"></i>
+          </button>
+        </div>
 
         {webPage.length === 0 ? (
-          <div className="text-center text-muted fs-5">No web pages found.</div>
+          <div className="d-flex flex-column align-items-center justify-content-center p-5 bg-light rounded shadow text-center">
+            <i className="bi bi-file-earmark-plus fs-1 text-secondary mb-3"></i>
+            <h3 className="text-muted mb-2">No web pages found</h3>
+            <p className="text-muted mb-4">Start creating your first page and bring your ideas to life!</p>
+            <button className="btn btn-primary btn-lg" onClick={() => navigate("/builder")}>
+              + Create New Page
+            </button>
+          </div>
         ) : (
           <div className="row g-4">
             {webPage.map((page, index) => (
