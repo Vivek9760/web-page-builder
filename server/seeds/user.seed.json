@@ -1,10 +1,17 @@
 [
     {
-        "name": "Vivek Saini",
-        "username": "vivek_saini",
+        "name": "Web Admin",
         "email": "admin@wpb.com",
         "status":"VERIFIED",
         "role": "ADMIN",
+        "isActive": true,
+        "password": "$2b$10$GK8urGQsyo9np1aU/rqp0OG8uMqP8AK4YDI6sGlqej6JeN7nTUTXG"
+    },
+    {
+        "name": "Vivek Saini",
+        "email": "user@wpb.com",
+        "status": "VERIFIED",
+        "role": "CLIENT",
         "isActive": true,
         "password": "$2b$10$GK8urGQsyo9np1aU/rqp0OG8uMqP8AK4YDI6sGlqej6JeN7nTUTXG"
     }
