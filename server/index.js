@@ -7,8 +7,16 @@ require("dotenv").config();
 
 const express = require("express");
 const cookieParser = require("cookie-parser");
+const http = require("http");
+
+/* ----------------------------- services ----------------------------- */
+const initializeSocket = require("./services/socket.service.js");
 
 const app = express();
+const server = http.createServer(app);
+
+/* ----------------------------- initialize socket ----------------------------- */
+initializeSocket(server);
 
 if (["development", "test"].includes(process.env.ENVIRONMENT)) {
   const morgan = require("morgan");
@@ -43,7 +51,7 @@ app.use((err, req, res, next) => {
 });
 
 /* --------------------- Start Server --------------------- */
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`🚀 Server listening on http://localhost:${port}`);
 });
 

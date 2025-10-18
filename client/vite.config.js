@@ -8,14 +8,15 @@ export default defineConfig(({ mode }) => {
     plugins: [react()],
     define: {
       __APP_ENV__: JSON.stringify(env.ENVIRONMENT),
+      __SERVER_URL__: JSON.stringify(env.SERVER_URL)
     },
     server: {
       port: env.SERVER_PORT,
       strictPort: true,
       open: true,
       proxy: {
-        '/api': env.SERVER_PROXY
-      }
-    }
-  }
+        "/api": env.SERVER_URL,
+      },
+    },
+  };
 })

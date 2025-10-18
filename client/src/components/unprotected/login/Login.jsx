@@ -11,6 +11,9 @@ import { Link, useNavigate } from "react-router-dom";
 /* ----------------------------- utils ----------------------------- */
 import toasty from "../../../utils/toasty.util";
 
+/* ----------------------------- services ----------------------------- */
+import { connectSocket } from "../../../services/socket.service";
+
 /* ----------------------------- constants ----------------------------- */
 import { EMAIL_PATTERN } from "../../../constants/validation.constant";
 
@@ -30,6 +33,7 @@ export default function LoginPage() {
         method: "POST",
         data: formData,
       });
+      connectSocket({ path: '/' });
       updateStore({ user: data.user, isAuthenticate: true });
       navigate("/");
     } catch (error) {
