@@ -11,6 +11,8 @@ export default function Toolbar({ onAddBlock }) {
     divider: "bi-dash-lg",
     card: "bi-card-text",
     container: "bi-box",
+    form: "bi-ui-checks",
+    list: "bi-list-ul",
   };
 
   const blockDescriptions = {
@@ -20,16 +22,17 @@ export default function Toolbar({ onAddBlock }) {
     divider: "Insert a horizontal line",
     card: "Create a content card",
     container: "Add a container for nested blocks",
+    form: "Create a form with fields",
+    list: "Add ordered or unordered list",
   };
 
   return (
     <div className="p-3 h-100" style={{ backgroundColor: "#f8f9fa" }}>
       <div className="mb-3">
-        <h6 className="fw-bold text-uppercase text-muted" style={{ fontSize: "12px", letterSpacing: "1px" }}>
+        <h6 className=" mt-3 fw-bold text-uppercase text-muted" style={{ fontSize: "12px", letterSpacing: "1px" }}>
           <i className="bi bi-box-seam me-2"></i>
           Components
         </h6>
-        <p className="text-muted small mb-0">Drag blocks to the canvas</p>
       </div>
 
       <div className="d-flex flex-column gap-2">
@@ -77,7 +80,6 @@ export default function Toolbar({ onAddBlock }) {
           </button>
         ))}
       </div>
-
       {/* Help Section */}
       <div
         className="mt-4 p-3"

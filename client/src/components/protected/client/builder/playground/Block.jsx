@@ -187,8 +187,108 @@ export default function Block({ block, onSelect, selectedBlockId, moveBlock, fin
 
       {block.type === "card" && (
         <div style={{ width: "100%" }}>
-          <h6 style={{ marginBottom: "8px", fontWeight: "600", color: block.styles.color || "#212529" }}>{block.content.title || "Card Title"}</h6>
-          <p style={{ margin: 0, fontSize: "14px", color: "#6c757d" }}>{block.content.body || "Card description goes here..."}</p>
+          {block.content.image && (
+            <div style={{ width: "100%", overflow: "hidden", borderRadius: "8px 8px 0 0", marginBottom: "12px" }}>
+              <img
+                src={block.content.image}
+                alt={block.content.title || "Card image"}
+                style={{ width: "100%", height: "auto", display: "block" }}
+                onError={(e) => {
+                  e.target.style.display = "none";
+                }}
+              />
+            </div>
+          )}
+          <div style={{ padding: "16px" }}>
+            <h6 style={{ marginBottom: "8px", fontWeight: "600", color: block.styles.color || "#212529" }}>{block.content.title || "Card Title"}</h6>
+            <p style={{ margin: 0, fontSize: "14px", color: "#6c757d" }}>{block.content.body || "Card description goes here..."}</p>
+          </div>
+        </div>
+      )}
+
+      {block.type === "form" && (
+        <div style={{ width: "100%" }}>
+          <form onSubmit={(e) => e.preventDefault()}>
+            {block.content.fields &&
+              block.content.fields.map((field, idx) => (
+                <div key={field.id || idx} style={{ marginBottom: "16px" }}>
+                  <label style={{ display: "block", marginBottom: "6px", fontSize: "14px", fontWeight: "500" }}>
+                    {field.label}
+                    {field.required && <span style={{ color: "#dc3545" }}> *</span>}
+                  </label>
+                  {field.type === "textarea" ? (
+                    <textarea
+                      placeholder={field.placeholder}
+                      rows={field.rows || 4}
+                      style={{
+                        width: "100%",
+                        padding: "8px 12px",
+                        borderRadius: "4px",
+                        border: "1px solid #ced4da",
+                        fontSize: "14px",
+                        fontFamily: "inherit",
+                        resize: "vertical",
+                      }}
+                      disabled
+                    />
+                  ) : (
+                    <input
+                      type={field.type || "text"}
+                      placeholder={field.placeholder}
+                      style={{
+                        width: "100%",
+                        padding: "8px 12px",
+                        borderRadius: "4px",
+                        border: "1px solid #ced4da",
+                        fontSize: "14px",
+                      }}
+                      disabled
+                    />
+                  )}
+                </div>
+              ))}
+            <button
+              type="submit"
+              style={{
+                backgroundColor: "#0d6efd",
+                color: "white",
+                border: "none",
+                padding: "10px 20px",
+                borderRadius: "6px",
+                fontSize: "14px",
+                fontWeight: "500",
+                cursor: "not-allowed",
+                width: "100%",
+              }}
+              disabled
+            >
+              {block.content.submitButton || "Submit"}
+            </button>
+          </form>
+        </div>
+      )}
+
+      {block.type === "list" && (
+        <div style={{ width: "100%" }}>
+          {block.content.listType === "ordered" ? (
+            <ol style={{ margin: 0, paddingLeft: "20px" }}>
+              {block.content.items &&
+                block.content.items.map((item, idx) => (
+                  <li key={idx} style={{ marginBottom: "6px" }}>
+                    {item}
+                  </li>
+                ))}
+            </ol>
+          ) : (
+            <ul style={{ margin: 0, paddingLeft: "20px" }}>
+              {block.content.items &&
+                block.content.items.map((item, idx) => (
+                  <li key={idx} style={{ marginBottom: "6px" }}>
+                    {item}
+                  </li>
+                ))}
+            </ul>
+          )}
         </div>
       )}
 
@@ -223,7 +323,7 @@ export default function Block({ block, onSelect, selectedBlockId, moveBlock, fin
             </div>
           )}
 
-          {/* Indicator for Container */}
+          {/* Drop Indicator for Container */}
           {isOver && canDrop && (
             <div
               style={{
@@ -248,6 +348,38 @@ export default function Block({ block, onSelect, selectedBlockId, moveBlock, fin
               Drop here
             </div>
           )}
+        </div>
+      )}
+
+      {isSelected && !isDragging && (
+        <div
+          style={{
+            position: "absolute",
+            bottom: "-2px",
+            left: "-2px",
+            display: "flex",
+            gap: "4px",
+            zIndex: 10,
+          }}
+        >
+          <button
+            onClick={handleDelete}
+            style={{
+              backgroundColor: "#dc3545",
+              color: "white",
+              border: "none",
+              borderRadius: "4px 0 0 0",
+              padding: "4px 8px",
+              fontSize: "12px",
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+              gap: "4px",
+            }}
+            title="Delete block"
+          >
+            <i className="bi bi-trash"></i>
+          </button>
         </div>
       )}
     </div>

@@ -152,6 +152,17 @@ export default function EditPanel({ block, onChange, onAddChild, onDelete, onCha
           {block.type === "card" && (
             <>
               <div className="mb-2">
+                <label className="form-label small">Card Image URL</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="https://example.com/image.jpg"
+                  value={block.content.image || ""}
+                  onChange={(e) => onChange({ ...block, content: { ...block.content, image: e.target.value } })}
+                  style={{ borderRadius: "6px" }}
+                />
+              </div>
+              <div className="mb-2">
                 <label className="form-label small">Card Title</label>
                 <input
                   type="text"
@@ -171,6 +182,219 @@ export default function EditPanel({ block, onChange, onAddChild, onDelete, onCha
                   value={block.content.body}
                   onChange={(e) => onChange({ ...block, content: { ...block.content, body: e.target.value } })}
                 />
+              </div>
+            </>
+          )}
+
+          {block.type === "form" && (
+            <>
+              <div className="mb-3">
+                <label className="form-label small fw-semibold">Form Fields</label>
+                {block.content.fields &&
+                  block.content.fields.map((field, idx) => (
+                    <div key={field.id || idx} className="card mb-2" style={{ borderRadius: "6px" }}>
+                      <div className="card-body p-2">
+                        <div className="d-flex justify-content-between align-items-center mb-2">
+                          <span className="badge bg-secondary" style={{ fontSize: "10px" }}>
+                            Field {idx + 1}
+                          </span>
+                          <button
+                            className="btn btn-sm btn-danger"
+                            onClick={() => {
+                              const newFields = block.content.fields.filter((_, i) => i !== idx);
+                              onChange({ ...block, content: { ...block.content, fields: newFields } });
+                            }}
+                            style={{ padding: "2px 8px", fontSize: "11px" }}
+                          >
+                            <i className="bi bi-x"></i>
+                          </button>
+                        </div>
+                        <div className="mb-2">
+                          <select
+                            className="form-select form-select-sm"
+                            value={field.type}
+                            onChange={(e) => {
+                              const newFields = [...block.content.fields];
+                              newFields[idx] = { ...field, type: e.target.value };
+                              onChange({ ...block, content: { ...block.content, fields: newFields } });
+                            }}
+                            style={{ borderRadius: "4px", fontSize: "12px" }}
+                          >
+                            <option value="text">Text</option>
+                            <option value="email">Email</option>
+                            <option value="password">Password</option>
+                            <option value="number">Number</option>
+                            <option value="tel">Phone</option>
+                            <option value="url">URL</option>
+                            <option value="date">Date</option>
+                            <option value="textarea">Textarea</option>
+                          </select>
+                        </div>
+                        <input
+                          type="text"
+                          className="form-control form-control-sm mb-2"
+                          placeholder="Label"
+                          value={field.label}
+                          onChange={(e) => {
+                            const newFields = [...block.content.fields];
+                            newFields[idx] = { ...field, label: e.target.value };
+                            onChange({ ...block, content: { ...block.content, fields: newFields } });
+                          }}
+                          style={{ borderRadius: "4px", fontSize: "12px" }}
+                        />
+                        <input
+                          type="text"
+                          className="form-control form-control-sm mb-2"
+                          placeholder="Placeholder"
+                          value={field.placeholder}
+                          onChange={(e) => {
+                            const newFields = [...block.content.fields];
+                            newFields[idx] = { ...field, placeholder: e.target.value };
+                            onChange({ ...block, content: { ...block.content, fields: newFields } });
+                          }}
+                          style={{ borderRadius: "4px", fontSize: "12px" }}
+                        />
+                        {field.type === "textarea" && (
+                          <input
+                            type="number"
+                            className="form-control form-control-sm mb-2"
+                            placeholder="Rows"
+                            value={field.rows || 4}
+                            onChange={(e) => {
+                              const newFields = [...block.content.fields];
+                              newFields[idx] = { ...field, rows: parseInt(e.target.value) || 4 };
+                              onChange({ ...block, content: { ...block.content, fields: newFields } });
+                            }}
+                            style={{ borderRadius: "4px", fontSize: "12px" }}
+                          />
+                        )}
+                        <div className="form-check">
+                          <input
+                            type="checkbox"
+                            className="form-check-input"
+                            checked={field.required}
+                            onChange={(e) => {
+                              const newFields = [...block.content.fields];
+                              newFields[idx] = { ...field, required: e.target.checked };
+                              onChange({ ...block, content: { ...block.content, fields: newFields } });
+                            }}
+                            id={`required-${idx}`}
+                          />
+                          <label className="form-check-label small" htmlFor={`required-${idx}`}>
+                            Required
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                <button
+                  className="btn btn-sm btn-outline-primary w-100"
+                  onClick={() => {
+                    const newField = {
+                      id: `field${Date.now()}`,
+                      type: "text",
+                      label: "New Field",
+                      placeholder: "Enter value",
+                      required: false,
+                    };
+                    onChange({
+                      ...block,
+                      content: {
+                        ...block.content,
+                        fields: [...(block.content.fields || []), newField],
+                      },
+                    });
+                  }}
+                  style={{ borderRadius: "6px" }}
+                >
+                  <i className="bi bi-plus-circle me-1"></i>
+                  Add Field
+                </button>
+              </div>
+              <div className="mb-2">
+                <label className="form-label small">Submit Button Text</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Submit"
+                  value={block.content.submitButton}
+                  onChange={(e) => onChange({ ...block, content: { ...block.content, submitButton: e.target.value } })}
+                  style={{ borderRadius: "6px" }}
+                />
+              </div>
+              <div className="mb-2">
+                <label className="form-label small">Form Action URL</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="#"
+                  value={block.content.action}
+                  onChange={(e) => onChange({ ...block, content: { ...block.content, action: e.target.value } })}
+                  style={{ borderRadius: "6px" }}
+                />
+              </div>
+            </>
+          )}
+
+          {block.type === "list" && (
+            <>
+              <div className="mb-2">
+                <label className="form-label small">List Type</label>
+                <select
+                  className="form-select"
+                  value={block.content.listType}
+                  onChange={(e) => onChange({ ...block, content: { ...block.content, listType: e.target.value } })}
+                  style={{ borderRadius: "6px" }}
+                >
+                  <option value="unordered">Unordered (Bullets)</option>
+                  <option value="ordered">Ordered (Numbers)</option>
+                </select>
+              </div>
+              <div className="mb-2">
+                <label className="form-label small fw-semibold">List Items</label>
+                {block.content.items &&
+                  block.content.items.map((item, idx) => (
+                    <div key={idx} className="input-group input-group-sm mb-2">
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder={`Item ${idx + 1}`}
+                        value={item}
+                        onChange={(e) => {
+                          const newItems = [...block.content.items];
+                          newItems[idx] = e.target.value;
+                          onChange({ ...block, content: { ...block.content, items: newItems } });
+                        }}
+                        style={{ borderRadius: "6px 0 0 6px" }}
+                      />
+                      <button
+                        className="btn btn-outline-danger"
+                        onClick={() => {
+                          const newItems = block.content.items.filter((_, i) => i !== idx);
+                          onChange({ ...block, content: { ...block.content, items: newItems } });
+                        }}
+                        style={{ borderRadius: "0 6px 6px 0" }}
+                      >
+                        <i className="bi bi-trash"></i>
+                      </button>
+                    </div>
+                  ))}
+                <button
+                  className="btn btn-sm btn-outline-primary w-100"
+                  onClick={() => {
+                    onChange({
+                      ...block,
+                      content: {
+                        ...block.content,
+                        items: [...(block.content.items || []), "New item"],
+                      },
+                    });
+                  }}
+                  style={{ borderRadius: "6px" }}
+                >
+                  <i className="bi bi-plus-circle me-1"></i>
+                  Add Item
+                </button>
               </div>
             </>
           )}

@@ -105,20 +105,117 @@ const RenderBlock = ({ block }) => {
             ...defaultStyles,
             ...styles,
             display: "inline-block",
+            overflow: "hidden",
           }}
         >
-          <div className="card-body">
+          {content?.image && (
+            <img
+              src={content.image}
+              className="card-img-top"
+              alt={content?.title || "Card image"}
+              style={{ width: "100%", height: "auto" }}
+              onError={(e) => {
+                e.target.style.display = "none";
+              }}
+            />
+          )}
+          <div className="card-body" style={{ padding: "16px" }}>
             {content?.title && (
-              <h5 className="card-title" style={{ color: styles?.color || "#212529" }}>
+              <h5 className="card-title" style={{ color: styles?.color || "#212529", marginBottom: "8px" }}>
                 {content.title}
               </h5>
             )}
             {content?.body && (
-              <p className="card-text" style={{ color: styles?.color || "#6c757d" }}>
+              <p className="card-text" style={{ color: "#6c757d", marginBottom: "0" }}>
                 {content.body}
               </p>
             )}
           </div>
+        </div>
+      );
+
+    case "form":
+      return (
+        <div style={{ ...defaultStyles, ...styles }}>
+          <form action={content?.action || "#"} method={content?.method || "POST"}>
+            {content?.fields &&
+              content.fields.map((field, idx) => (
+                <div key={field.id || idx} style={{ marginBottom: "16px" }}>
+                  <label style={{ display: "block", marginBottom: "6px", fontSize: "14px", fontWeight: "500" }}>
+                    {field.label}
+                    {field.required && <span style={{ color: "#dc3545" }}> *</span>}
+                  </label>
+                  {field.type === "textarea" ? (
+                    <textarea
+                      name={field.id}
+                      placeholder={field.placeholder}
+                      required={field.required}
+                      rows={field.rows || 4}
+                      style={{
+                        width: "100%",
+                        padding: "8px 12px",
+                        borderRadius: "4px",
+                        border: "1px solid #ced4da",
+                        fontSize: "14px",
+                        fontFamily: "inherit",
+                        resize: "vertical",
+                      }}
+                    />
+                  ) : (
+                    <input
+                      type={field.type || "text"}
+                      name={field.id}
+                      placeholder={field.placeholder}
+                      required={field.required}
+                      style={{
+                        width: "100%",
+                        padding: "8px 12px",
+                        borderRadius: "4px",
+                        border: "1px solid #ced4da",
+                        fontSize: "14px",
+                      }}
+                    />
+                  )}
+                </div>
+              ))}
+            <button
+              type="submit"
+              className="btn btn-primary"
+              style={{
+                width: "100%",
+                padding: "10px 20px",
+                fontSize: "14px",
+                fontWeight: "500",
+              }}
+            >
+              {content?.submitButton || "Submit"}
+            </button>
+          </form>
+        </div>
+      );
+
+    case "list":
+      return (
+        <div style={{ ...defaultStyles, ...styles }}>
+          {content?.listType === "ordered" ? (
+            <ol style={{ margin: 0, paddingLeft: "20px" }}>
+              {content?.items &&
+                content.items.map((item, idx) => (
+                  <li key={idx} style={{ marginBottom: "6px" }}>
+                    {item}
+                  </li>
+                ))}
+            </ol>
+          ) : (
+            <ul style={{ margin: 0, paddingLeft: "20px" }}>
+              {content?.items &&
+                content.items.map((item, idx) => (
+                  <li key={idx} style={{ marginBottom: "6px" }}>
+                    {item}
+                  </li>
+                ))}
+            </ul>
+          )}
         </div>
       );
 
