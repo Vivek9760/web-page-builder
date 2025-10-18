@@ -228,8 +228,10 @@ export default function Block({ block, onSelect, selectedBlockId, moveBlock, fin
                         fontSize: "14px",
                         fontFamily: "inherit",
                         resize: "vertical",
+                        cursor: "grab",
                       }}
-                      disabled
+                      onFocus={(e) => e.target.blur()}
+                      readOnly
                     />
                   ) : (
                     <input
@@ -241,8 +243,10 @@ export default function Block({ block, onSelect, selectedBlockId, moveBlock, fin
                         borderRadius: "4px",
                         border: "1px solid #ced4da",
                         fontSize: "14px",
+                        cursor: "grab",
                       }}
-                      disabled
+                      onFocus={(e) => e.target.blur()}
+                      readOnly
                     />
                   )}
                 </div>
