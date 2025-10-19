@@ -36,6 +36,10 @@ export default function Home() {
         <button className="btn btn-outline-warning w-100 fw-semibold py-2" onClick={() => navigate("/terms")}>
           ⚖️ Terms & Conditions
         </button>
+
+        <button className="btn w-100 fw-semibold py-2" style={{ backgroundColor: "#00bcd4", color: "#fff" }} onClick={() => navigate("/web-pages")}>
+          🌐 Published Web Pages
+        </button>
       </div>
 
       {/* About Section */}

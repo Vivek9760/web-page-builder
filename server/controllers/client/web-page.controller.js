@@ -76,8 +76,39 @@ const saveOrPublishWebPage = async (req, res) => {
   }
 };
 
+/* ----------------------------- getPublishWebPageBySlug ----------------------------- */
+const getPublishWebPageBySlug = async (req, res) => {
+  try {
+    const { params } = req;
+    const { slug } = params;
+
+    const webPage = await WebPageModel.findOne({ slug, status: "published" });
+
+    return res.status(HTTP_STATUS.OK).json({ webPage });
+  } catch (error) {
+    console.error(FILE_PATH + "-> getPublishWebPageBySlug", error);
+    return res.status(HTTP_STATUS.UNAUTHORIZED).send({ message: TOASTY.SERVER.INTERNAL_SERVER_ERROR });
+  }
+};
+
+/* ----------------------------- getPublishedWebPages ----------------------------- */
+const getPublishedWebPages = async (req, res) => {
+  try {
+    const { userId } = req;
+
+    const webPages = await WebPageModel.find({ status: "published" }, { title: 1, slug: 1, status: 1, createdOn: 1 }).sort({ createdOn: -1 });
+
+    return res.status(HTTP_STATUS.OK).json({ webPages });
+  } catch (error) {
+    console.error(FILE_PATH + "-> getPublishedWebPages", error);
+    return res.status(HTTP_STATUS.UNAUTHORIZED).send({ message: TOASTY.SERVER.INTERNAL_SERVER_ERROR });
+  }
+};
+
 module.exports = {
   getWebPageList,
   getWebPageBySlug,
   saveOrPublishWebPage,
+  getPublishWebPageBySlug,
+  getPublishedWebPages,
 };

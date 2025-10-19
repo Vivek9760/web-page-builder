@@ -6,10 +6,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
 /* ----------------------------- components ----------------------------- */
-import Loader from "../../../common-ui/Loader";
-
-/* ----------------------------- utils ----------------------------- */
-import { formatDateTime } from "../../../../utils/time.util";
+import Loader from "./Loader";
 
 const RenderBlock = ({ block }) => {
   const { type, content, styles, children = [] } = block;
@@ -258,7 +255,7 @@ const RenderBlock = ({ block }) => {
   }
 };
 
-const PagePreview = () => {
+const PublishPage = () => {
   const [webPage, setWebPage] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -274,7 +271,7 @@ const PagePreview = () => {
   const fetchWebPage = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.get(`/api/user/web-page/${slug}`);
+      const { data } = await axios.get(`/api/published/web-page/${slug}`);
       setWebPage(data.webPage);
       setError(null);
     } catch (err) {
@@ -301,41 +298,20 @@ const PagePreview = () => {
 
   return (
     <Loader isLoading={loading}>
-      {webPage && (
+      {webPage ? (
         <div style={{ minHeight: "100vh", backgroundColor: "#ffffff" }}>
-          {/* Header */}
           <div className="bg-light border-bottom" style={{ padding: "40px 0", marginBottom: "40px" }}>
             <div className="container">
               <div className="text-center">
                 <h1 className="display-4 fw-bold mb-2" style={{ color: "#212529" }}>
                   {webPage.title || "Untitled Page"}
                 </h1>
-                <div className="d-flex align-items-center justify-content-center gap-3 text-muted">
-                  <span>
-                    <i className="bi bi-link-45deg me-1"></i>
-                    <code style={{ fontSize: "14px" }}>{webPage.slug}</code>
-                  </span>
-                  <span>•</span>
-                  <span>
-                    <i className="bi bi-calendar me-1"></i>
-                    {formatDateTime(webPage.createdOn, "DD MMM YYYY")}
-                  </span>
-                  <span>•</span>
-                  <span className={`badge ${webPage.status === "published" ? "bg-success" : "bg-secondary"}`}>{webPage.status}</span>
-                  <span>•</span>
-                  <span
-                    className="ms-2 bi bi-pencil-square"
-                    style={{ cursor: "pointer" }}
-                    onClick={() => navigate(`/builder/${webPage.slug}`)}
-                  ></span>
-                </div>
               </div>
             </div>
           </div>
 
-          {/* Content */}
           <div className="container pb-5">
-            {webPage.blocks && webPage.blocks.length > 0 ? (
+            {webPage?.blocks && webPage?.blocks?.length > 0 ? (
               <div style={{ display: "flex", flexWrap: "wrap", gap: "16px" }}>
                 {webPage.blocks.map((block) => (
                   <RenderBlock key={block.id} block={block} />
@@ -357,7 +333,6 @@ const PagePreview = () => {
             )}
           </div>
 
-          {/* Footer */}
           <div className="bg-light border-top mt-5" style={{ padding: "30px 0" }}>
             <div className="container text-center text-muted">
               <small>
@@ -367,9 +342,22 @@ const PagePreview = () => {
             </div>
           </div>
         </div>
+      ) : (
+        <div
+          className="text-center p-5"
+          style={{
+            backgroundColor: "#f8f9fa",
+            borderRadius: "8px",
+            border: "2px dashed #dee2e6",
+          }}
+        >
+          <i className="bi bi-inbox" style={{ fontSize: "48px", color: "#adb5bd" }}></i>
+          <h4 className="mt-3 text-muted">Nothing to see here... literally</h4>
+          <p className="text-muted">Either the content ran away or it never existed.</p>
+        </div>
       )}
     </Loader>
   );
 };
 
-export default PagePreview;
+export default PublishPage;
