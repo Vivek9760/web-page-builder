@@ -261,10 +261,9 @@ export default function Block({ block, onSelect, selectedBlockId, moveBlock, fin
                 borderRadius: "6px",
                 fontSize: "14px",
                 fontWeight: "500",
-                cursor: "not-allowed",
+                cursor: "grab",
                 width: "100%",
               }}
-              disabled
             >
               {block.content.submitButton || "Submit"}
             </button>
