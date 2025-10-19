@@ -301,7 +301,7 @@ const PagePreview = () => {
 
   return (
     <Loader isLoading={loading}>
-      {webPage && (
+      {webPage ? (
         <div style={{ minHeight: "100vh", backgroundColor: "#ffffff" }}>
           {/* Header */}
           <div className="bg-light border-bottom" style={{ padding: "40px 0", marginBottom: "40px" }}>
@@ -366,6 +366,19 @@ const PagePreview = () => {
               </small>
             </div>
           </div>
+        </div>
+      ) : (
+        <div
+          className="text-center p-5"
+          style={{
+            backgroundColor: "#f8f9fa",
+            borderRadius: "8px",
+            border: "2px dashed #dee2e6",
+          }}
+        >
+          <i className="bi bi-inbox" style={{ fontSize: "48px", color: "#adb5bd" }}></i>
+          <h4 className="mt-3 text-muted">Nothing to see here... literally</h4>
+          <p className="text-muted">Either the content ran away or it never existed.</p>
         </div>
       )}
     </Loader>
