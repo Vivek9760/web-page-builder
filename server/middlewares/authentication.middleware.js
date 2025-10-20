@@ -41,7 +41,12 @@ const authentication = async (req, res, next) => {
 
     const authenticationInfo = await AuthenticationModel.findOne({ sessionId: sessionInfo.sessionId, userId: sessionInfo.userId });
 
-    if (!authenticationInfo || authenticationInfo.expiredAt < Date.now()) {
+    if (!authenticationInfo) {
+      throw new Error("Invalid token");
+    }
+
+    if (authenticationInfo.expiredAt < Date.now()) {
+      await AuthenticationModel.deleteOne({ sessionId: sessionInfo.sessionId, userId: sessionInfo.userId });
       throw new Error("Token expired");
     }
 
