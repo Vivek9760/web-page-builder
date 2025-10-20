@@ -25,7 +25,10 @@ export default function Playground({
     hover() {
       setIsHovering(true);
     },
-    drop(item) {
+    drop(item, monitor) {
+      if (monitor.didDrop()) {
+        return;
+      }
       setIsHovering(false);
       const { id: draggedId, parentId: draggedParentId } = item;
       const newParentId = null;
