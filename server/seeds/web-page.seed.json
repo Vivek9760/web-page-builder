@@ -1,0 +1,566 @@
+[
+    {
+        "title": "Modern Landing Page - Premium Template",
+        "slug": "default-template",
+        "blocks": [
+            {
+                "id": "hero-container-1",
+                "type": "container",
+                "content": null,
+                "styles": {
+                    "backgroundColor": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                    "color": "#ffffff",
+                    "fontSize": "16px",
+                    "padding": "60px 40px",
+                    "margin": "0",
+                    "borderRadius": "0",
+                    "border": "none",
+                    "width": "100%",
+                    "height": "auto"
+                },
+                "children": [
+                    {
+                        "id": "hero-title-1",
+                        "type": "text",
+                        "content": "🚀 Welcome to the Future of Web Design",
+                        "styles": {
+                            "backgroundColor": "transparent",
+                            "color": "#000000",
+                            "fontSize": "48px",
+                            "padding": "20px",
+                            "margin": "0 0 20px 0",
+                            "borderRadius": "0",
+                            "border": "none",
+                            "width": "100%",
+                            "height": "auto"
+                        },
+                        "children": []
+                    },
+                    {
+                        "id": "hero-subtitle-1",
+                        "type": "text",
+                        "content": "Build stunning, responsive websites with our drag-and-drop page builder. No coding required!",
+                        "styles": {
+                            "backgroundColor": "transparent",
+                            "color": "#000000",
+                            "fontSize": "20px",
+                            "padding": "10px 20px",
+                            "margin": "0 0 30px 0",
+                            "borderRadius": "0",
+                            "border": "none",
+                            "width": "100%",
+                            "height": "auto"
+                        },
+                        "children": []
+                    },
+                    {
+                        "id": "hero-button-1",
+                        "type": "button",
+                        "content": {
+                            "label": "Get Started Free →",
+                            "link": "#signup"
+                        },
+                        "styles": {
+                            "backgroundColor": "#ffffff",
+                            "color": "#667eea",
+                            "fontSize": "18px",
+                            "padding": "16px 40px",
+                            "margin": "10px 20px",
+                            "borderRadius": "50px",
+                            "border": "none",
+                            "width": "auto",
+                            "height": "auto"
+                        },
+                        "children": []
+                    },
+                    {
+                        "id": "hero-button-2",
+                        "type": "button",
+                        "content": {
+                            "label": "Watch Demo",
+                            "link": "#demo"
+                        },
+                        "styles": {
+                            "backgroundColor": "#c0c0c0",
+                            "color": "#000000",
+                            "fontSize": "20px",
+                            "padding": "16px 40px",
+                            "margin": "10px 20px",
+                            "borderRadius": "50px",
+                            "border": "2px solid #ffffff",
+                            "width": "auto",
+                            "height": "auto"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": "features-title-1",
+                "type": "text",
+                "content": "✨ Amazing Features",
+                "styles": {
+                    "backgroundColor": "transparent",
+                    "color": "#1f2937",
+                    "fontSize": "36px",
+                    "padding": "60px 20px 20px 20px",
+                    "margin": "0",
+                    "borderRadius": "0",
+                    "border": "none",
+                    "width": "100%",
+                    "height": "auto"
+                },
+                "children": []
+            },
+            {
+                "id": "features-subtitle-1",
+                "type": "text",
+                "content": "Everything you need to create professional websites in minutes",
+                "styles": {
+                    "backgroundColor": "transparent",
+                    "color": "#6b7280",
+                    "fontSize": "18px",
+                    "padding": "0 20px 40px 20px",
+                    "margin": "0",
+                    "borderRadius": "0",
+                    "border": "none",
+                    "width": "100%",
+                    "height": "auto"
+                },
+                "children": []
+            },
+            {
+                "id": "features-container-1",
+                "type": "container",
+                "content": null,
+                "styles": {
+                    "backgroundColor": "transparent",
+                    "color": "#212529",
+                    "fontSize": "16px",
+                    "padding": "20px",
+                    "margin": "0",
+                    "borderRadius": "0",
+                    "border": "none",
+                    "width": "100%",
+                    "height": "auto"
+                },
+                "children": [
+                    {
+                        "id": "feature-card-1",
+                        "type": "card",
+                        "content": {
+                            "image": "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=250&fit=crop",
+                            "title": "🎨 Drag & Drop Builder",
+                            "body": "Intuitive interface that makes building websites fun and easy. Simply drag components and drop them where you want."
+                        },
+                        "styles": {
+                            "backgroundColor": "#ffffff",
+                            "color": "#1f2937",
+                            "fontSize": "16px",
+                            "padding": "0",
+                            "margin": "10px",
+                            "borderRadius": "16px",
+                            "border": "1px solid #e5e7eb",
+                            "width": "350px",
+                            "height": "auto"
+                        },
+                        "children": []
+                    },
+                    {
+                        "id": "feature-card-2",
+                        "type": "card",
+                        "content": {
+                            "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=250&fit=crop",
+                            "title": "📱 Responsive Design",
+                            "body": "Your websites look perfect on all devices - from desktop to mobile. Automatic responsive optimization included."
+                        },
+                        "styles": {
+                            "backgroundColor": "#ffffff",
+                            "color": "#1f2937",
+                            "fontSize": "16px",
+                            "padding": "0",
+                            "margin": "10px",
+                            "borderRadius": "16px",
+                            "border": "1px solid #e5e7eb",
+                            "width": "350px",
+                            "height": "auto"
+                        },
+                        "children": []
+                    },
+                    {
+                        "id": "feature-card-3",
+                        "type": "card",
+                        "content": {
+                            "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=250&fit=crop",
+                            "title": "⚡ Lightning Fast",
+                            "body": "Optimized performance ensures your pages load instantly. Built with modern technology for speed."
+                        },
+                        "styles": {
+                            "backgroundColor": "#ffffff",
+                            "color": "#1f2937",
+                            "fontSize": "16px",
+                            "padding": "0",
+                            "margin": "10px",
+                            "borderRadius": "16px",
+                            "border": "1px solid #e5e7eb",
+                            "width": "350px",
+                            "height": "auto"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": "divider-1",
+                "type": "divider",
+                "content": null,
+                "styles": {
+                    "backgroundColor": "transparent",
+                    "color": "#e5e7eb",
+                    "fontSize": "16px",
+                    "padding": "0",
+                    "margin": "60px 40px",
+                    "borderRadius": "0",
+                    "border": "none",
+                    "width": "calc(100% - 80px)",
+                    "height": "2px"
+                },
+                "children": []
+            },
+            {
+                "id": "benefits-title-1",
+                "type": "text",
+                "content": "🎯 Why Choose Us?",
+                "styles": {
+                    "backgroundColor": "transparent",
+                    "color": "#1f2937",
+                    "fontSize": "36px",
+                    "padding": "20px",
+                    "margin": "0",
+                    "borderRadius": "0",
+                    "border": "none",
+                    "width": "100%",
+                    "height": "auto"
+                },
+                "children": []
+            },
+            {
+                "id": "benefits-list-1",
+                "type": "list",
+                "content": {
+                    "listType": "unordered",
+                    "items": [
+                        "✅ No coding knowledge required - perfect for beginners",
+                        "✅ 100+ pre-built components and templates",
+                        "✅ Real-time preview of your changes",
+                        "✅ SEO optimized and performance focused",
+                        "✅ Free hosting and custom domain support",
+                        "✅ 24/7 customer support from our expert team"
+                    ]
+                },
+                "styles": {
+                    "backgroundColor": "#f9fafb",
+                    "color": "#374151",
+                    "fontSize": "18px",
+                    "padding": "30px 40px",
+                    "margin": "20px 40px",
+                    "borderRadius": "16px",
+                    "border": "2px solid #e5e7eb",
+                    "width": "calc(100% - 80px)",
+                    "height": "auto"
+                },
+                "children": []
+            },
+            {
+                "id": "divider-2",
+                "type": "divider",
+                "content": null,
+                "styles": {
+                    "backgroundColor": "transparent",
+                    "color": "#e5e7eb",
+                    "fontSize": "16px",
+                    "padding": "0",
+                    "margin": "60px 40px",
+                    "borderRadius": "0",
+                    "border": "none",
+                    "width": "calc(100% - 80px)",
+                    "height": "2px"
+                },
+                "children": []
+            },
+            {
+                "id": "testimonials-title-1",
+                "type": "text",
+                "content": "💬 What Our Users Say",
+                "styles": {
+                    "backgroundColor": "transparent",
+                    "color": "#1f2937",
+                    "fontSize": "36px",
+                    "padding": "20px",
+                    "margin": "0 0 40px 0",
+                    "borderRadius": "0",
+                    "border": "none",
+                    "width": "100%",
+                    "height": "auto"
+                },
+                "children": []
+            },
+            {
+                "id": "testimonials-container-1",
+                "type": "container",
+                "content": null,
+                "styles": {
+                    "backgroundColor": "transparent",
+                    "color": "#212529",
+                    "fontSize": "16px",
+                    "padding": "20px",
+                    "margin": "0",
+                    "borderRadius": "0",
+                    "border": "none",
+                    "width": "100%",
+                    "height": "auto"
+                },
+                "children": [
+                    {
+                        "id": "testimonial-card-1",
+                        "type": "card",
+                        "content": {
+                            "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=250&fit=crop",
+                            "title": "Sarah Johnson - Small Business Owner",
+                            "body": "\"This page builder completely transformed how I manage my business website. I can make updates in minutes without calling a developer!\""
+                        },
+                        "styles": {
+                            "backgroundColor": "#fef3c7",
+                            "color": "#1f2937",
+                            "fontSize": "16px",
+                            "padding": "0",
+                            "margin": "10px",
+                            "borderRadius": "16px",
+                            "border": "2px solid #fbbf24",
+                            "width": "350px",
+                            "height": "auto"
+                        },
+                        "children": []
+                    },
+                    {
+                        "id": "testimonial-card-2",
+                        "type": "card",
+                        "content": {
+                            "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=250&fit=crop",
+                            "title": "Michael Chen - Freelance Designer",
+                            "body": "\"As a designer, I love how much control I have over every element. The styling options are comprehensive yet easy to use.\""
+                        },
+                        "styles": {
+                            "backgroundColor": "#dbeafe",
+                            "color": "#1f2937",
+                            "fontSize": "16px",
+                            "padding": "0",
+                            "margin": "10px",
+                            "borderRadius": "16px",
+                            "border": "2px solid #3b82f6",
+                            "width": "350px",
+                            "height": "auto"
+                        },
+                        "children": []
+                    },
+                    {
+                        "id": "testimonial-card-3",
+                        "type": "card",
+                        "content": {
+                            "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=250&fit=crop",
+                            "title": "Emily Rodriguez - Marketing Manager",
+                            "body": "\"We've cut our landing page creation time by 80%. The templates are modern and the undo/redo feature is a lifesaver!\""
+                        },
+                        "styles": {
+                            "backgroundColor": "#dcfce7",
+                            "color": "#1f2937",
+                            "fontSize": "16px",
+                            "padding": "0",
+                            "margin": "10px",
+                            "borderRadius": "16px",
+                            "border": "2px solid #22c55e",
+                            "width": "350px",
+                            "height": "auto"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": "divider-3",
+                "type": "divider",
+                "content": null,
+                "styles": {
+                    "backgroundColor": "transparent",
+                    "color": "#e5e7eb",
+                    "fontSize": "16px",
+                    "padding": "0",
+                    "margin": "60px 40px",
+                    "borderRadius": "0",
+                    "border": "none",
+                    "width": "calc(100% - 80px)",
+                    "height": "2px"
+                },
+                "children": []
+            },
+            {
+                "id": "cta-container-1",
+                "type": "container",
+                "content": null,
+                "styles": {
+                    "backgroundColor": "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+                    "color": "#ffffff",
+                    "fontSize": "16px",
+                    "padding": "60px 40px",
+                    "margin": "40px 0 0 0",
+                    "borderRadius": "0",
+                    "border": "none",
+                    "width": "100%",
+                    "height": "auto"
+                },
+                "children": [
+                    {
+                        "id": "cta-title-1",
+                        "type": "text",
+                        "content": "🎉 Ready to Build Something Amazing?",
+                        "styles": {
+                            "backgroundColor": "transparent",
+                            "color": "#000000",
+                            "fontSize": "42px",
+                            "padding": "20px",
+                            "margin": "0 0 20px 0",
+                            "borderRadius": "0",
+                            "border": "none",
+                            "width": "100%",
+                            "height": "auto"
+                        },
+                        "children": []
+                    },
+                    {
+                        "id": "cta-subtitle-1",
+                        "type": "text",
+                        "content": "Join thousands of happy users creating beautiful websites every day",
+                        "styles": {
+                            "backgroundColor": "transparent",
+                            "color": "#000000",
+                            "fontSize": "20px",
+                            "padding": "10px 20px",
+                            "margin": "0 0 40px 0",
+                            "borderRadius": "0",
+                            "border": "none",
+                            "width": "100%",
+                            "height": "auto"
+                        },
+                        "children": []
+                    },
+                    {
+                        "id": "cta-form-1",
+                        "type": "form",
+                        "content": {
+                            "fields": [
+                                {
+                                    "id": "email-signup",
+                                    "type": "email",
+                                    "label": "Email Address",
+                                    "placeholder": "you@example.com",
+                                    "required": true
+                                },
+                                {
+                                    "id": "name-signup",
+                                    "type": "text",
+                                    "label": "Full Name",
+                                    "placeholder": "John Doe",
+                                    "required": true
+                                },
+                                {
+                                    "id": "company-signup",
+                                    "type": "text",
+                                    "label": "Company (Optional)",
+                                    "placeholder": "Your company name",
+                                    "required": false
+                                }
+                            ],
+                            "submitButton": "Start Building Now! 🚀",
+                            "action": "/api/signup",
+                            "method": "POST"
+                        },
+                        "styles": {
+                            "backgroundColor": "#ffffff",
+                            "color": "#1f2937",
+                            "fontSize": "16px",
+                            "padding": "40px",
+                            "margin": "20px auto",
+                            "borderRadius": "16px",
+                            "border": "none",
+                            "width": "500px",
+                            "height": "auto"
+                        },
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": "footer-container-1",
+                "type": "container",
+                "content": null,
+                "styles": {
+                    "backgroundColor": "#ffffff",
+                    "color": "#ffffff",
+                    "fontSize": "14px",
+                    "padding": "40px",
+                    "margin": "0",
+                    "borderRadius": "0",
+                    "border": "none",
+                    "width": "100%",
+                    "height": "auto"
+                },
+                "children": [
+                    {
+                        "id": "footer-text-1",
+                        "type": "text",
+                        "content": "© 2025 Page Builder Pro. All rights reserved.",
+                        "styles": {
+                            "backgroundColor": "transparent",
+                            "color": "#000000",
+                            "fontSize": "14px",
+                            "padding": "10px 20px",
+                            "margin": "0",
+                            "borderRadius": "0",
+                            "border": "none",
+                            "width": "100%",
+                            "height": "auto"
+                        },
+                        "children": []
+                    },
+                    {
+                        "id": "footer-links-1",
+                        "type": "list",
+                        "content": {
+                            "listType": "unordered",
+                            "items": [
+                                "Privacy Policy",
+                                "Terms of Service",
+                                "Contact Us",
+                                "Documentation",
+                                "Support"
+                            ]
+                        },
+                        "styles": {
+                            "backgroundColor": "transparent",
+                            "color": "#000000",
+                            "fontSize": "14px",
+                            "padding": "10px 20px",
+                            "margin": "10px 0 0 0",
+                            "borderRadius": "0",
+                            "border": "none",
+                            "width": "100%",
+                            "height": "auto"
+                        },
+                        "children": []
+                    }
+                ]
+            }
+        ],
+        "status": "published"
+    }
+]
