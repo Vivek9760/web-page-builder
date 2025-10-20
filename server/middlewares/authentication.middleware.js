@@ -123,7 +123,7 @@ const socketAuthentication = async (socket, next) => {
 
     next();
   } catch (error) {
-    console.error("Socket authentication error:", error);
+    // console.error("Socket authentication error:", error);
   }
 };
 
