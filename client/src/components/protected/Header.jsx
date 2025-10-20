@@ -74,12 +74,20 @@ export default function Header() {
             {store.user.role === "CLIENT" && (
               <>
                 <li className="nav-item">
-                  <Link to="/" className="nav-link text-light px-3 py-2 rounded hover-bg-light" style={{ transition: "0.2s" }}>
+                  <Link
+                    to="/"
+                    className={`nav-link px-3 py-2 rounded ${location.pathname === "/" ? "bg-light text-dark fw-semibold" : "text-light"}`}
+                    style={{ transition: "0.2s" }}
+                  >
                     Pages
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/builder" className="nav-link text-light px-3 py-2 rounded hover-bg-light" style={{ transition: "0.2s" }}>
+                  <Link
+                    to="/builder"
+                    className={`nav-link px-3 py-2 rounded ${location.pathname.includes("/builder") ? "bg-light text-dark fw-semibold" : "text-light"}`}
+                    style={{ transition: "0.2s" }}
+                  >
                     Builder
                   </Link>
                 </li>
