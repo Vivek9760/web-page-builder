@@ -6,9 +6,29 @@ require("../configs/db.config");
 
 const path = require("path");
 const fs = require("fs");
+const crypto = require("crypto");
 
 /* ----------------------------- Collections to Seed ----------------------------- */
 const collections = ["user", "web-page"]; // Add more as needed
+
+const generateUniqueSlug = async (title, slugs) => {
+  const baseSlug = title
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/[\s\W-]+/g, "-");
+
+  let slug = baseSlug;
+  let exists = slugs.has(slug);
+
+  while (exists) {
+    const randomSuffix = crypto.randomBytes(2).toString("hex");
+    slug = `${baseSlug}-${randomSuffix}`;
+    exists = slugs.has(slug);
+  }
+
+  return slug;
+};
 
 (async () => {
   try {
@@ -27,23 +47,28 @@ const collections = ["user", "web-page"]; // Add more as needed
         console.warn(`⚠️  Skipped: No seed file for "${name}"`);
         continue;
       }
-      const data = require(seedPath);
+      let data = require(seedPath);
+
+      await Model.deleteMany({});
 
       if (name == "web-page") {
         const modelPath = path.resolve(__dirname, `../models/user.model.js`);
         const UserModel = require(modelPath);
-        const admin = await UserModel.findOne({ role: "ADMIN" });
-        if (admin) {
-          data.forEach((i) => {
-            i.author = admin._id;
-          });
-        } else {
-          continue;
-        }
-      }
+        const users = await UserModel.find({});
+        let newData = [];
+        let slugs = new Set();
 
-      // Seed DB
-      await Model.deleteMany({});
+        for (const user of users) {
+          for (const i of data) {
+            const template = JSON.parse(JSON.stringify(i));
+            template.author = user._id;
+            template.slug = await generateUniqueSlug(template.title, slugs);
+            slugs.add(template.slug);
+            newData.push(template);
+          }
+        }
+        data = newData;
+      }
       const result = await Model.insertMany(data);
 
       console.log(`✅ Inserted ${result.length} record(s) into "${name}"\n`);

@@ -1,6 +1,6 @@
 [
     {
-        "title": "Modern Landing Page - Premium Template",
+        "title": "Default Template",
         "slug": "default-template",
         "blocks": [
             {
@@ -560,7 +560,6 @@
                     }
                 ]
             }
-        ],
-        "status": "published"
+        ]
     }
 ]

@@ -5,11 +5,15 @@ const bcrypt = require("bcrypt");
 const FILE_PATH = "server/controllers/authentication.controller";
 
 /* ----------------------------- utils ----------------------------- */
-const { generateRandomString, generateOtp } = require("../utils/crypto.util");
+const { generateRandomString, generateOtp, generateUniqueSlug } = require("../utils/crypto.util");
 
 /* ----------------------------- model ----------------------------- */
 const UserModel = require("../models/user.model");
+const WebPageModel = require("../models/web-page.model");
 const AuthenticationModel = require("../models/authentication.model");
+
+/* ----------------------------- json ----------------------------- */
+const DEFAULT_WEB_PAGES = require("../seeds/web-page.seed.json");
 
 /* ----------------------------- constants ----------------------------- */
 const TOASTY = require("../constants/toasty.constant");
@@ -90,12 +94,20 @@ const signup = async (req, res) => {
       expiredAt: new Date(Date.now() + TOKEN_EXPIRY),
     };
 
-    await UserModel.create({
+    const user = await UserModel.create({
       name,
       email,
       password: hashedPassword,
       verifyEmail,
     });
+
+    const defaultPages = JSON.parse(JSON.stringify(DEFAULT_WEB_PAGES));
+
+    for (const template of defaultPages) {
+      template.author = user._id;
+      template.slug = await generateUniqueSlug(template.title);
+      await WebPageModel.create(template);
+    }
 
     console.log(verifyEmail);
 
